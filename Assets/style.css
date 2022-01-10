@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'tahoma';
+    text-align: center;
+}
+
+#timer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: lightsteelblue;
+    min-height: 8vh;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.hide {
+    display: none;
+}
+
+h1 {
+    font-size: 45px;
+    margin-top: 80px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 50px;
+    line-height: 25px;
+}
+
+p {
+    line-height: 25px;
+}
+
+#start-btn {
+    background-color: black;
+    border: solid 3px black;
+    border-radius: 8px;
+    color: white;
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 55px;
+    width: 200px;
+}
+
+#start-btn:hover {
+    background-color: lightsteelblue;
+}
+
+h3 {
+    font-size: 30px;
+    padding-bottom: 15px;
+    padding-top: 30px;
+}
+
+#answer-1, #answer-2, #answer-3, #answer-4  {
+    background-color: lightsteelblue;
+    margin: 20px 10px 10px 10px;
+    border: solid 3px black;
+    border-radius: 8px;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    height: 60px;
+    width: 200px;
+}
+
+#answer-1:hover {
+    background-color: white;
+}
+
+#answer-2:hover {
+    background-color: white;
+}
+
+#answer-3:hover {
+    background-color: white;
+}
+
+#answer-4:hover {
+    background-color: white;
+}
+
+h4 {
+    font-size: 25px;
+    padding-bottom: 15px;
+    padding-top: 30px;
+}
+
+#submit-name {
+    background-color: black;
+    border: solid 3px black;
+    border-radius: 4px;
+    color: white;
+    margin: 20px 10px 30px 10px;
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px;
+    width: 100px;
+}
+
+#submit-name:hover {
+    background-color: lightsteelblue;
+}
+
+#play-again {
+    background-color: black;
+    border: solid 3px black;
+    border-radius: 8px;
+    color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 55px;
+    width: 200px;
+}
+
+#play-again:hover {
+    background-color: lightsteelblue;
+}
+
