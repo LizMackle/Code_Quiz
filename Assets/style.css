@@ -55,7 +55,7 @@ p {
     background-color: lightsteelblue;
 }
 
-#question-page, #end-page, #highscores-page {
+#question-page, #end-page, #leaderboard {
     width: 600px;
     height: 450px;
     margin: 0 auto;
