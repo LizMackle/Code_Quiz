@@ -1,7 +1,7 @@
 // ELEMENTS
 const landingPage = document.getElementById("landing-page");
 const startButton = document.getElementById("start-btn");
-const questionPage = document.getElementById("question-container");
+const questionPage = document.getElementById("question-page");
 const question = document.getElementById("question-title");
 const answers = document.querySelector(".choices");
 const answerButton = document.querySelector("choices.buttons");
@@ -19,6 +19,7 @@ startButton.addEventListener('click', startQuiz);
 
 function startQuiz(){
     landingPage.classList.add('hide');
+    questionPage.classList.remove('hide');
     startTimer();
 }
 
