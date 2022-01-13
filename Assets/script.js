@@ -15,7 +15,7 @@ const submitButton = document.getElementById("submit-name");
 const highScores = document.getElementById("leaderboard");
 const playAgainButton = document.getElementById("play-again");
 //
-var timeRemaining = 5;
+var timeRemaining = 60;
 var timerInterval;
 
 // When start button is clicked, landing page disappears / first question appears & timer is activated
