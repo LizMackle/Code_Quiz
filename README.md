@@ -14,4 +14,5 @@ To create a timed quiz on JavaScript fundamentals that stores high scores so tha
 https://github.com/LizMackle/Code_Quiz
 
 ## 💻 [Published Page](https://lizmackle.github.io/Code_Quiz/)
-![Screenshot](https://user-images.githubusercontent.com/93589073/148749992-d76de089-804d-41d9-8552-70b3f9186a89.PNG)
+![Screenshotcombined](https://user-images.githubusercontent.com/93589073/149288308-e099be78-2775-4250-addd-48f16cc542a0.png)
+
