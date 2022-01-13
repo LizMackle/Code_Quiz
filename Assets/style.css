@@ -9,24 +9,24 @@ body {
     text-align: center;
 }
 
-#timer {
+header {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     background-color: lightsteelblue;
-    min-height: 8vh;
-    font-size: 20px;
+    min-height: 20vh;
+    font-size: 50px;
     font-weight: bold;
+}
+
+#timer {
+    font-size: 20px;
+    margin-top: 25px;
 }
 
 .hide {
     display: none;
-}
-
-h1 {
-    font-size: 45px;
-    margin-top: 80px;
 }
 
 h2 {
@@ -47,7 +47,7 @@ p {
     margin-top: 50px;
     font-size: 20px;
     font-weight: bold;
-    height: 55px;
+    height: 65px;
     width: 200px;
 }
 
@@ -111,6 +111,12 @@ h4 {
     background-color: lightsteelblue;
 }
 
+h6 {
+    font-size: 25px;
+    padding-bottom: 15px;
+    padding-top: 30px;
+}
+
 #play-again {
     background-color: black;
     border: solid 3px black;
@@ -120,7 +126,7 @@ h4 {
     margin-bottom: 50px;
     font-size: 20px;
     font-weight: bold;
-    height: 55px;
+    height: 60px;
     width: 200px;
 }
 
