@@ -72,7 +72,7 @@ h3 {
     padding-top: 50px;
 }
 
-#answer-1, #answer-2, #answer-3, #answer-4  {
+#choice-1, #choice-2, #choice-3, #choice-4  {
     background-color: lightsteelblue;
     margin: 20px 10px 10px 10px;
     border: solid 3px black;
@@ -84,7 +84,7 @@ h3 {
     width: 200px;
 }
 
-#answer-1:hover, #answer-2:hover, #answer-3:hover, #answer-4:hover {
+#choice-1:hover, #choice-2:hover, #choice-3:hover, #choice-4:hover {
     background-color: white;
 }
 
