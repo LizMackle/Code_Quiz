@@ -1,27 +1,25 @@
 // ELEMENTS
+const timerElement = document.getElementById("seconds");
 const landingPage = document.getElementById("landing-page");
 const startButton = document.getElementById("start-btn");
+//
+const questionIndex = 0;
 const questionPage = document.getElementById("question-page");
 const question = document.getElementById("question-title");
 const answers = document.querySelector(".choices");
 const answerButton = document.querySelector("choices.buttons");
 const answerfeedback = document.getElementById("feedback");
+//
 const endGamePage = document.getElementById("end-page");
-const highScorePage = document.getElementById("highscores-page");
+//
+const leaderboard = document.getElementById("highscores-page");
 const playAgainButton = document.getElementById("play-again");
-const timerElement = document.getElementById("seconds");
-
+//
 var timeRemaining = 60;
 var timerInterval;
 
 // When start button is clicked, landing page disappears / first question appears & timer is activated
 startButton.addEventListener('click', startQuiz);
-
-function startQuiz(){
-    landingPage.classList.add('hide');
-    questionPage.classList.remove('hide');
-    startTimer();
-}
 
 // Timer function 
 function startTimer(){
@@ -30,17 +28,33 @@ function startTimer(){
         timerElement.textContent = timeRemaining;
         if (timeRemaining === 0) {
             clearInterval(timerInterval);
+            endGame();
         }
     }, 1000);
 }
 
-
-// end game function
-function endGame(){
+function startQuiz(){
+    landingPage.classList.add('hide');
+    questionPage.classList.remove('hide');
+    startTimer();
+    showQuestion();
 }
 
+// first question
+function showQuestion (){
+    const currentquestion = quizQuestions[questionIndex];
+    question.textContent = currentquestion.question;
+    const choices = currentquestion.choices;
+    for (var i = 0; i < choices.length; i++) {
+        answers.children[i].textContent = choices[i];
+    }
+}
 
-// Questions
+// shows next question
+function nextQuestion (){
+   
+}
+
 const quizQuestions = [
     {
         question: 'JavaScript files have an extension of:',
@@ -93,6 +107,17 @@ const quizQuestions = [
         correctAnswer: 4,
     },
 ];
+
+// end game function
+function endGame(){
+    clearInterval(timerInterval);
+    timerElement.textContent = 0;
+    if (timeRemaining < 0) {
+        timeRemaining = 0;
+    }
+    end-page.classList.remove('hide');
+
+}
 
 
 // Answer feedback is given (corrct/incorrect)
