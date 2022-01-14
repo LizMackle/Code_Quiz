@@ -1,25 +1,23 @@
 const timerElement = document.getElementById("seconds");
 const landingPage = document.getElementById("landing-page");
 const startButton = document.getElementById("start-btn");
+//
+const questionIndex = 0;
 const questionPage = document.getElementById("question-page");
+const question = document.getElementById("question-title");
+const answers = document.querySelector(".answers");
+const answerButton = document.querySelector("choices.buttons");
+const answerfeedback = document.getElementById("feedback");
+//
 const endGamePage = document.getElementById("end-page");
 const submitButton = document.getElementById("submit-name");
 //
 const highScores = document.getElementById("leaderboard");
 const playAgainButton = document.getElementById("play-again");
 //
-//
-const answerButton = document.querySelector("answers.buttons");
-const answerfeedback = document.getElementById("feedback");
-//
-const questionTitle = document.getElementById("question");
-const answers = Array.from(document.getElementsByClassName("choice-text"));
-var questionCounter = 0;
-var currentQuestion = {};
-var availableQuestions = [];
-//
 var timeRemaining = 60;
 var timerInterval;
+var answerMessage;
 
 // When start button is clicked, landing page disappears / first question appears & timer is activated
 startButton.addEventListener('click', startQuiz);
@@ -34,7 +32,7 @@ function startTimer() {
             timerElement.textContent = timeRemaining;
         }
     }, 1000);
-}
+};
 
 // start quiz functoon
 function startQuiz() {
@@ -42,82 +40,96 @@ function startQuiz() {
     questionPage.classList.remove('hide');
     startTimer();
     showQuestion();
-}
+};
 
 // first question function
 function showQuestion() {
-    questionCounter = 0;
-    availableQuestions = [quizQuestions];
-    console.log(availableQuestions);
-    nextQuestion();
-}
-
-// cylces through next question 
-function nextQuestion() {
-    questionCounter++;
-    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-    currentQuestion = availableQuestions[questionIndex];
-    questionTitle.innerText = currentQuestion.questionTitle;
+    var currentquestion = quizQuestions[questionIndex];
+    question.textContent = currentquestion.question;
+    const choices = currentquestion.choices;
+    for (var i = 0; i < choices.length; i++) {
+        answers.children[i].textContent = choices[i];
+    }
 };
 
-    // end game function
-    function endGame() {
-        clearInterval(timerInterval);
-        questionPage.classList.add('hide');
-        endGamePage.classList.remove('hide');
-    }
 
-    function leaderBoard() {
-        highScores.classList.remove('hide');
-        endGamePage.classList.add('hide');
-    }
+// cylces through next question 
+// function nextQuestion() {
+//     if (questionIndex < quizQuestions.length - 1) {
+//         questionIndex++;
+//         showQuestion();
+//     } else { 
+//         endGame();
+//     };
 
-    // endGame();
-    // leaderboard()
+// end game function
+function endGame() {
+    clearInterval(timerInterval);
+    questionPage.classList.add('hide');
+    endGamePage.classList.remove('hide');
+};
 
-    var quizQuestions = [
-        {
-            question: 'JavaScript files have an extension of:',
-            choice1: ".java",
-            choice2: ".js",
-            choice3: ".javascript",
-            choice4: ".xml",
-            answer: 2,
-        },
-        {
-            question: 'In web design, what does CSS stand for?',
-            choice1: "Counter Strike: Source",
-            choice2: "Corrective Style Sheet",
-            choice3: "Computer Style Sheet",
-            choice4: "Cascading Style Sheet",
-            answer: 4,
-        },
-        {
-            question: 'How do you comment a line out in JavaScript?',
-            choice1: "%",
-            choice2: "+",
-            choice3: "//",
-            choice4: "Cena",
-            answer: 3,
-        },
-        {
-            question: 'In which HTML elements do we put in JavaScript code?',
-            choice1: "<js>",
-            choice2: "<script>",
-            choice3: "<body>",
-            choice4: "<head>",
-            answer: 2,
-        },
-        {
-            question: 'Which language runs in a web browser?',
-            choice1: ".Java",
-            choice2: "C",
-            choice3: "Python",
-            choice4: "Javascript",
-            answer: 4,
-        },
-    ];
+function leaderBoard() {
+    highScores.classList.remove('hide');
+    endGamePage.classList.add('hide');
+};
 
+// nextQuestion();
+// endGame();
+// leaderboard()
+
+const quizQuestions = [
+    {
+        question: 'JavaScript files have an extension of:',
+        choices: [
+            ".java",
+            ".js",
+            ".javascript",
+            ".xml",
+        ],
+        answer: 2,
+    },
+    {
+        question: 'In web design, what does CSS stand for?',
+        choices: [
+            "Counter Strike: Source",
+            "Corrective Style Sheet",
+            "Computer Style Sheet",
+            "Cascading Style Sheet",
+        ],
+        answer: 4,
+    },
+    {
+        question: 'How do you comment a line out in JavaScript?',
+        choices: [
+            "%",
+            "+",
+            "//",
+            "Cena",
+        ],
+        answer: 3,
+    },
+    {
+        question: 'In which HTML elements do we put in JavaScript code?',
+        choices: [
+            "<js>",
+            "<script>",
+            "<body>",
+            "<head>",
+        ],
+        answer: 2,
+    },
+    {
+        question: 'Which language runs in a web browser?',
+        choices: [
+            ".Java",
+            "C",
+            "Python",
+            "Javascript",
+        ],
+        answer: 4,
+    },
+];
 
 // Answer feedback is given (corrct/incorrect)
 
@@ -130,18 +142,3 @@ function nextQuestion() {
 // Score is shown, given the option to save with initials
 
 // Option to play again
-
-// var currentquestion = quizQuestions[questionIndex];
-//     question.textContent = currentquestion.question;
-//     const choices = currentquestion.choices;
-//     for (var i = 0; i < choices.length; i++) {
-//         answers.children[i].textContent = choices[i];
-//     }
-
-// next question
-// if (questionIndex < quizQuestions.length - 1) {
-//     questionIndex++;
-//     showQuestion();
-// } else { 
-//     endGame();
-// }
