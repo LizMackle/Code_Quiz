@@ -74,7 +74,7 @@ const quizQuestions = [
     },
 ];
 
-landingPage.classList.remove('hide');
+// landingPage.classList.remove('hide');
 
 // When start button is clicked, landing page disappears / first question appears & timer is activated
 startButton.addEventListener('click', startQuiz);
