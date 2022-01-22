@@ -10,9 +10,11 @@ const choiceButtons = document.querySelectorAll(".choice-list");
 const answerfeedback = document.getElementById("feedback");
 //
 const endGamePage = document.getElementById("end-page");
+var quizScore = document.getElementById("quiz-score");
 const submitButton = document.getElementById("submit-name");
 //
 const highScores = document.getElementById("leaderboard");
+const scoreList = document.getElementById('scores');
 const playAgainButton = document.getElementById("play-again");
 //
 var timeRemaining = 60;
@@ -72,8 +74,11 @@ const quizQuestions = [
     },
 ];
 
+landingPage.classList.remove('hide');
+
 // When start button is clicked, landing page disappears / first question appears & timer is activated
 startButton.addEventListener('click', startQuiz);
+
 
 // Timer function 
 function startTimer() {
@@ -120,10 +125,10 @@ choiceButtons.forEach(function (button, index) {
     button.addEventListener('click', function (event) {
         const question = quizQuestions[questionIndex];
         const actualAnswer = question.choices[question.answer - 1];
-        // checks if button clicked is correct or incorrect
+        // Answer feedback is given (corrct/incorrect)
         const buttonContent = event.target.textContent;
         const isCorrect = actualAnswer === buttonContent;
-        // if incorrect
+        // If answer is given incorrectly, 10 seconds is subtracted off the clock
         if (!isCorrect) {
             // deduct 10 sec
             timeRemaining = timeRemaining - 10;
@@ -147,7 +152,7 @@ function updateTimerText(numOfSec) {
     timerElement.textContent = numOfSec;
 }
 
-// cylces through next question 
+// When answers are given, next question is presented
 function nextQuestion() {
     if (questionIndex < quizQuestions.length - 1) {
         questionIndex++;
@@ -157,36 +162,73 @@ function nextQuestion() {
     };
 }
 
-// show score (how to determine score?)
-// when user clicks on submit button (add event listener), grab user input
-// store highscore + initials to local storage 
-// move on to leaderboard page 
-// user can play again by clicking play again button (add event listener / show question page)
+// When all questions are answered or timer hits 0, end the game
+// show score (final number on the clock)
 
 // end game function
 function endGame() {
-    clearInterval(timerInterval);
     questionPage.classList.add('hide');
     endGamePage.classList.remove('hide');
+    quizScore.textContent = timeRemaining;
 };
 
+// when user clicks on submit button, grab user input
+submitButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    const playerInitials = document.getElementById("insert-initials").value;
+    
+    // add the new highscore to exisitng highscore if exists,
+    // store highscore + initials to local storage 
+    let existingHighscores = JSON.parse(localStorage.getItem('highscores')); 
+    // otherwise create a brandnew hs array
+    if(existingHighscores === null){
+        existingHighscores = [];
+    }
+    
+    const playerHighscore = {
+        name: playerInitials,
+        score: timeRemaining
+    }
+    existingHighscores.push(playerHighscore);
+
+    localStorage.setItem('highscores',  JSON.stringify(existingHighscores))
+    leaderBoard();
+})
+
+// leaderboard page function
 function leaderBoard() {
+    clearInterval(timerInterval);
+    timerElement.textContent = 0;
     highScores.classList.remove('hide');
     endGamePage.classList.add('hide');
+
+    // displays player highscores in a list
+    const highscoreDataString = localStorage.getItem('highscores')
+    const highscoreData = JSON.parse(highscoreDataString);
+
+    scoreList.textContent = "";
+    for (let index = 0; index < highscoreData.length; index++) {
+        const highScore = highscoreData[index];
+        
+        const li = document.createElement('li');
+
+        li.textContent = highScore.name + ' - ' + highScore.score;
+
+        scoreList.append(li);
+    }
 };
 
-// endGame();
-// leaderboard()
+// user can play again by clicking play again button
+playAgainButton.addEventListener('click', function (event) {
+    clearInterval(timerInterval);
+    timeRemaining = 60;
+    timerElement.textContent = timeRemaining;
+    endGamePage.classList.add('hide');
+    highScores.classList.add('hide');
+    landingPage.classList.remove('hide');
+});
 
 
-// Answer feedback is given (corrct/incorrect)
 
-// When answers are given, new question is presented
 
-// If answer is given incorrectly, time is subtracted off the clock (10 seconds)
 
-// When all questions are answered or timer hits 0, end the game
-
-// Score is shown, given the option to save with initials
-
-// Option to play again
