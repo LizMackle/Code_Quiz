@@ -225,6 +225,7 @@ playAgainButton.addEventListener('click', function (event) {
     endGamePage.classList.add('hide');
     highScores.classList.add('hide');
     landingPage.classList.remove('hide');
+    questionIndex = 0;
 });
 
 
